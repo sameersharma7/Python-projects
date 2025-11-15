@@ -1,0 +1,28 @@
+import random
+
+print(" # Stone - Paper - Scissor Game\n")
+
+choices = {
+    "s": "Stone",
+    "p": "Paper",
+    "c": "Scissor"
+}
+
+user = input("Enter your choice (s for Stone, p for Paper, c for Scissor): ").lower()
+
+if user not in choices:
+    print("Invalid choice! Please enter s, p, or c.")
+else:
+    computer = random.choice(list(choices.keys()))
+
+    print(f"\nYou chose: {choices[user]}")
+    print(f"Computer chose: {choices[computer]}")
+
+    if user == computer:
+        print("\nResult: It's a Draw! 🤝")
+    elif (user == "s" and computer == "c") or \
+         (user == "p" and computer == "s") or \
+         (user == "c" and computer == "p"):
+        print("\nResult: You Win! 🎉")
+    else:
+        print("\nResult: You Lose! 😅")
