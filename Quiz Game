@@ -1,0 +1,85 @@
+import random
+
+print("Welcome to Real Madrid Quiz!")
+
+play = input("Enter 'y' to play and 'n' to exit: ").lower()
+
+if play == 'y':
+    score = 0
+    questions = {
+        1: {
+            "q": "Cristiano Ronaldo won how many Champions League titles with Real Madrid?",
+            "options": {"a": "2", "b": "3", "c": "4", "d": "5"},
+            "answer": "c"
+        },
+        2: {
+            "q": "In which year did Cristiano Ronaldo join Real Madrid?",
+            "options": {"a": "2007", "b": "2008", "c": "2009", "d": "2010"},
+            "answer": "c"
+        },
+        3: {
+            "q": "Which club did Ronaldo score his famous bicycle kick goal against in the UCL?",
+            "options": {"a": "Atletico Madrid", "b": "Juventus", "c": "Barcelona", "d": "Ajax"},
+            "answer": "b"
+        },
+        4: {
+            "q": "Which Real Madrid manager worked with Ronaldo during the 2014 Champions League win?",
+            "options": {"a": "Jose Mourinho", "b": "Zinedine Zidane", "c": "Carlo Ancelotti", "d": "Rafael Benitez"},
+            "answer": "c"
+        },
+        5: {
+            "q": "Real Madrid's home stadium is called?",
+            "options": {"a": "Allianz Arena", "b": "Santiago Bernabeu", "c": "Old Trafford", "d": "Emirates Stadium"},
+            "answer": "b"
+        },
+        6: {
+            "q": "Ronaldo's iconic jersey number is?",
+            "options": {"a": "9", "b": "10", "c": "11", "d": "7"},
+            "answer": "d"
+        },
+        7: {
+            "q": "Cristiano Ronaldo holds Real Madrid's record for:",
+            "options": {"a": "Most assists", "b": "Most matches played", "c": "Most goals scored", "d": "Most tackles made"},
+            "answer": "c"
+        },
+        8: {
+            "q": "Which club did Cristiano Ronaldo join after leaving Real Madrid in 2018?",
+            "options": {"a": "PSG", "b": "Manchester United", "c": "Juventus", "d": "Sporting CP"},
+            "answer": "c"
+        },
+        9: {
+            "q": "Which team did Ronaldo score a hat-trick against in the 2016 Club World Cup final?",
+            "options": {"a": "Kashima Antlers", "b": "River Plate", "c": "Chelsea", "d": "Flamengo"},
+            "answer": "a"
+        },
+        10: {
+            "q": "Cristiano Ronaldo scored his 450 goals for Real Madrid in how many games?",
+            "options": {"a": "438", "b": "400", "c": "500", "d": "600"},
+            "answer": "a"
+        }
+    }
+
+
+    order = random.sample(list(questions.keys()), 10)
+
+    for key in order:
+        q = questions[key]
+        print("\n" + q["q"])
+
+        for opt, text in q["options"].items():
+            print(f" {opt}) {text}")
+
+        user_ans = input("Enter your choice (a,b,c,d): ").lower()
+
+        if user_ans == q["answer"]:
+            print("Correct Answer! ✔")
+            score += 1
+        else:
+            print("Incorrect Answer ❌")
+            print(f"The correct answer is: {q['answer']}) {q['options'][q['answer']]}")
+
+    print("\nEND - Thank you for playing!")
+    print(f"Your total score is = {score}/10")
+
+else:
+    print("You have chosen not to play, thank you!")
