@@ -1,6 +1,6 @@
 import random
 
-print(" # Stone - Paper - Scissor Game\n")
+print(" # Stone - Paper - Scissor (3 Game Tournament - No Draws)\n")
 
 choices = {
     "s": "Stone",
@@ -8,21 +8,46 @@ choices = {
     "c": "Scissor"
 }
 
-user = input("Enter your choice (s for Stone, p for Paper, c for Scissor): ").lower()
+user_score = 0
+comp_score = 0
 
-if user not in choices:
-    print("Invalid choice! Please enter s, p, or c.")
-else:
-    computer = random.choice(list(choices.keys()))
+for game in range(1, 4):
+    print(f"\n--- Game {game} ---")
 
-    print(f"\nYou chose: {choices[user]}")
-    print(f"Computer chose: {choices[computer]}")
+    while True: 
+        user = input("Enter your choice (s for Stone, p for Paper, c for Scissor): ").lower()
 
-    if user == computer:
-        print("\nResult: It's a Draw! 🤝")
-    elif (user == "s" and computer == "c") or \
-         (user == "p" and computer == "s") or \
-         (user == "c" and computer == "p"):
-        print("\nResult: You Win! 🎉")
-    else:
-        print("\nResult: You Lose! 😅")
+        if user not in choices:
+            print("Invalid input! Try again.")
+            continue
+
+        computer = random.choice(list(choices.keys()))
+
+        print(f"You chose: {choices[user]}")
+        print(f"Computer chose: {choices[computer]}")
+
+        if user == computer:
+            print("It's a Draw. Play again!")
+            continue  
+
+        if (user == "s" and computer == "c") or \
+           (user == "p" and computer == "s") or \
+           (user == "c" and computer == "p"):
+            print("You Win this round! 🎉")
+            user_score += 1
+        else:
+            print("Computer Wins this round 😅")
+            comp_score += 1
+        break 
+
+print("\n===============================")
+print("       TOURNAMENT RESULT       ")
+print("===============================")
+
+print(f"Your Wins: {user_score}")
+print(f"Computer Wins: {comp_score}")
+
+if user_score > comp_score:
+    print("\n🏆 YOU ARE THE TOURNAMENT CHAMPION! 🏆")
+elif comp_score > user_score:
+    print("\n💀 COMPUTER IS THE TOURNAMENT CHAMPION! 💀")
